@@ -17,9 +17,6 @@ def get_citations_by_year(file):
             flag = True
             flag_first = True
         elif flag:
-            # print(row[0])
-            # print(row)
-            # input()
             y_data = np.array(row[ys:ye]).astype(np.float)
             if flag_first:
                 citations = np.array(y_data)
