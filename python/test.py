@@ -1,30 +1,17 @@
-import csv
 import numpy as np
 import matplotlib.pyplot as plt
-# import sys
-#
-# sys.path.insert(0,'../lit')
+import sys
+sys.path.insert(0,'/python')
+from citation_data import *
 
-def get_citations_by_year(file):
-    file = csv.reader(open('../lit/{0}.csv'.format(file), newline=''), delimiter=',')
+opts = ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble']
 
-    flag = False
-    for row in file:
-        # print(row)
-        if row[0] == 'Title':
-            ys = row.index('1900')
-            ye = row.index('2018')
-            flag = True
-            flag_first = True
-        elif flag:
-            y_data = np.array(row[ys:ye]).astype(np.float)
-            if flag_first:
-                citations = np.array(y_data)
-                flag_first = False
-            else:
-                citations = np.vstack([citations, y_data])
-    t = np.arange(1900,2018)
-    return t, np.sum(citations,0)
+method = opts[4]
+ff = '{0}_fisheries'.format(method)
+fc = '{0}_cons'.format(method)
+fe = '{0}_epi'.format(method)
+
 t, citations = get_citations_by_year('voi_epi')
 plt.plot(t,citations)
 plt.show()
+
