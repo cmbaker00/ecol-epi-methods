@@ -16,7 +16,7 @@ fc = '{0}_cons'.format(method)
 fe = '{0}_epi'.format(method)
 
 t, citations = get_citations_by_year(ff)
-trange = t <= 2015
+trange = (t <= 2015) & (t > 1950)
 plt.plot(t[trange],citations[trange])
 plt.show()
 
