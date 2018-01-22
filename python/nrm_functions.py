@@ -37,3 +37,8 @@ def get_all_start_years():
         yrs = get_start_year_publications(opt)
         out[opt] = {'fish': yrs[0], 'cons': yrs[1], 'epi': yrs[2]}
     return out
+
+def get_earliest_year():
+    opts = get_methods()
+    start_years = get_all_start_years()
+    return {method: min(list(start_years[method].values())) for method in opts}
