@@ -29,3 +29,11 @@ def get_start_year_publications(method, num = 10):
     fc_st = year_x_citations(tfc, papersfc)
     fe_st = year_x_citations(tfe, papersfe)
     return ff_st, fc_st, fe_st
+
+def get_all_start_years():
+    opts = get_methods()
+    out = {}
+    for opt in opts:
+        yrs = get_start_year_publications(opts)
+        out[opt] = {'fish': yrs[0], 'cons': yrs[1], 'epi': yrs[2]}
+    return out
