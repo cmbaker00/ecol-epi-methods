@@ -17,4 +17,4 @@ method = opts[4]
 # t, citations, papers = get_citations_by_year(ff)
 # plot_citations_year(t, papers)
 
-print(get_start_year_publications(method))
+print(get_all_start_years())

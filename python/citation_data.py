@@ -1,8 +1,8 @@
 import csv
 import numpy as np
 
-def get_citations_by_year(file):
-    file = csv.reader(open('../lit/{0}.csv'.format(file), newline=''), delimiter=',')
+def get_citations_by_year(filename):
+    file = csv.reader(open('../lit/{0}.csv'.format(filename), newline=''), delimiter=',')
 
     flag = False
     yrs = []
@@ -15,7 +15,10 @@ def get_citations_by_year(file):
             flag_first = True
         elif flag:
             y_data = np.array(row[ys:ye]).astype(np.float)
-            yrs.append(row[7])
+            yr = row[7]
+            if yr[0].isalpha():
+                yr = row[8]
+            yrs.append(yr)
             if flag_first:
                 citations = np.array(y_data)
                 flag_first = False

@@ -34,6 +34,6 @@ def get_all_start_years():
     opts = get_methods()
     out = {}
     for opt in opts:
-        yrs = get_start_year_publications(opts)
+        yrs = get_start_year_publications(opt)
         out[opt] = {'fish': yrs[0], 'cons': yrs[1], 'epi': yrs[2]}
     return out
