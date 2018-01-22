@@ -19,3 +19,13 @@ def plot_citations_year(t, citations, mint = 1950, maxt = 2015):
 def year_x_citations(t, citations, num = 10):
     cum_citations = np.cumsum(citations)
     return t[cum_citations > 0][0]
+
+def get_start_year_publications(method, num = 10):
+    ff, fc, fe = file_names(method)
+    tff, citationsff, papersff = get_citations_by_year(ff)
+    tfc, citationsfc, papersfc = get_citations_by_year(fc)
+    tfe, citationsfe, papersfe = get_citations_by_year(fe)
+    ff_st = year_x_citations(tff, papersff)
+    fc_st = year_x_citations(tfc, papersfc)
+    fe_st = year_x_citations(tfe, papersfe)
+    return ff_st, fc_st, fe_st

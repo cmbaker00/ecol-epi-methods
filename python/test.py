@@ -12,9 +12,9 @@ from nrm_functions import *
 opts = get_methods()
 
 method = opts[4]
-ff, fc, fe = file_names(method)
+# ff, fc, fe = file_names(method)
+#
+# t, citations, papers = get_citations_by_year(ff)
+# plot_citations_year(t, papers)
 
-t, citations, papers = get_citations_by_year(ff)
-plot_citations_year(t, papers)
-
-print(year_x_citations(t, papers))
+print(get_start_year_publications(method))
