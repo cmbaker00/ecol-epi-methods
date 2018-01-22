@@ -15,7 +15,4 @@ method = opts[4]
 ff, fc, fe = file_names(method)
 
 t, citations = get_citations_by_year(ff)
-trange = (t <= 2015) & (t > 1950)
-plt.plot(t[trange],citations[trange])
-plt.show()
-
+plot_citations_year(t, citations)
