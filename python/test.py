@@ -16,3 +16,5 @@ ff, fc, fe = file_names(method)
 
 t, citations = get_citations_by_year(ff)
 plot_citations_year(t, citations)
+
+print(year_x_citations(t, citations))
