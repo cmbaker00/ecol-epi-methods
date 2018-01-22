@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
-pth = sys.path
-pth.append(pth[-1] + '/python')
-sys.path = pth
+# pth = sys.path
+# pth.append(pth[-1] + '/python')
+# sys.path = pth
 
 # sys.path.insert(0,'/python')
 from citation_data import *
