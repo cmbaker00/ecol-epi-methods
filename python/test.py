@@ -7,13 +7,12 @@ import sys
 
 # sys.path.insert(0,'/python')
 from citation_data import *
+from nrm_functions import *
 
-opts = ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble']
+opts = get_methods()
 
 method = opts[4]
-ff = '{0}_fisheries'.format(method)
-fc = '{0}_cons'.format(method)
-fe = '{0}_epi'.format(method)
+ff, fc, fe = file_names(method)
 
 t, citations = get_citations_by_year(ff)
 trange = (t <= 2015) & (t > 1950)
