@@ -14,7 +14,7 @@ opts = get_methods()
 method = opts[4]
 ff, fc, fe = file_names(method)
 
-t, citations = get_citations_by_year(ff)
-plot_citations_year(t, citations)
+t, citations, papers = get_citations_by_year(ff)
+plot_citations_year(t, papers)
 
-print(year_x_citations(t, citations))
+print(year_x_citations(t, papers))
