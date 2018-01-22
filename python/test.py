@@ -9,3 +9,4 @@ opts = get_methods()
 start_years = get_all_start_years()
 
 plt.plot(list(start_years['ethics'].values()))
+plt.close()
