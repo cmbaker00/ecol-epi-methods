@@ -29,3 +29,23 @@ def get_citations_by_year(filename):
 
 def create_frequency(years, data):
     return [sum(data == t) for t in years]
+
+def get_paper_titles_before(year, method):
+    file = csv.reader(open('../lit/{0}.csv'.format(method), newline=''), delimiter=',')
+    titles = []
+    flag = False
+    for row in file:
+        # print(row)
+        if row[0] == 'Title':
+            ys = row.index('1900')
+            ye = row.index('2018')
+            flag = True
+            flag_first = True
+        elif flag:
+            y_data = np.array(row[ys:ye]).astype(np.float)
+            yr = row[7]
+            if yr[0].isalpha():
+                yr = row[8]
+            if yr <= year:
+                titles.append(row[0])
+    return titles
