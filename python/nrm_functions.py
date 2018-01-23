@@ -42,3 +42,19 @@ def get_earliest_year():
     opts = get_methods()
     start_years = get_all_start_years()
     return {method: min(list(start_years[method].values())) for method in opts}
+
+def ordered_list_methods_by_year():
+    yrs = get_earliest_year()
+    yr_list = list(yrs.values())
+    yr_list.sort()
+    lst_nested = [[method for method in yrs if yrs[method] == yr] for yr in yr_list] # Ordered list that is nested
+    lst = []
+    counter = 0
+    for ent in lst_nested:
+        if len(ent) > counter + 1:
+            lst.append(ent[counter])
+            counter += 1
+        else:
+            lst.append(ent[0])
+            counter = 0
+    return lst
