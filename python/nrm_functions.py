@@ -58,3 +58,14 @@ def ordered_list_methods_by_year():
             lst.append(ent[0])
             counter = 0
     return lst
+
+def custom_colours(col = 'all'):
+    colours = [[.2, .5, .9],
+               [.1, .8, .1],
+               [.8, .1, .4]]
+    if col.isnumeric():
+        return colours[col]
+    elif col == 'all':
+        return colours
+    else:
+        return 'Unknown option'
