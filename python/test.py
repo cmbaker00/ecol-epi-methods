@@ -16,6 +16,5 @@ for method in meth_list:
         # continue
         print(cols[fld])
         plt.scatter(start_years[method][fld], height, s = 100, c = custom_colours(fld))
-        oops this is a mistake
 # plt.plot(list(start_years['ethics'].values()))
 # plt.close()
