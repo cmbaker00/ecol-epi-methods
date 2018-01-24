@@ -67,5 +67,11 @@ def custom_colours(col = 'all'):
         return colours[col]
     elif col == 'all':
         return colours
+    elif col == 'epi':
+        return colours[0]
+    elif col == 'cons':
+        return colours[1]
+    elif col == 'fish':
+        return colours[2]
     else:
         return 'Unknown option'
