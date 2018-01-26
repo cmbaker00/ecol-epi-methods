@@ -44,7 +44,7 @@ def get_all_start_years():
 def get_earliest_year():
     opts = get_methods()
     start_years = get_all_start_years()
-    return {method: min(list(start_years[method].values())) for method in opts}
+    return {method: min(x for x in list(start_years[method].values()) if x is not None) for method in opts}
 
 def ordered_list_methods_by_year():
     yrs = get_earliest_year()
