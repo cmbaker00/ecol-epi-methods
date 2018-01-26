@@ -5,6 +5,16 @@ import numpy as np
 def get_methods():
     return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble']
 
+def full_meth_name(method):
+    dict = {'ethics': 'Ethics', 'optim': 'Optimisation', 'costben': 'Cost-benefit', 'voi': 'Value of Information',
+            'adaptive': 'Adaptive Management', 'ibm': 'Individual Based Model', 'sdm': 'Structured Decision-Making',
+            'ensemble': 'Ensemble Models'}
+    return dict[method]
+
+def return_all_full_names():
+    meths = get_methods()
+    return [full_meth_name(method) for method in meths]
+
 def file_names(method):
     ff = '{0}_fisheries'.format(method)
     fc = '{0}_cons'.format(method)
