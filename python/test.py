@@ -53,7 +53,7 @@ for ytl in yticklabels:
     ax.text(sty - h_offset,hgt - text_offset/2,ytl)
     hgt += 1
 
-
+ax.yaxis.set_visible(False)
 # plt.yticks(rotation='vertical')
 fld = 'epi'
 method = 'ensemble'
@@ -61,4 +61,5 @@ method = 'ensemble'
 ff, fc, fe = file_names(method)
 titles = get_paper_titles_before(start_years[method][fld], fe)
 
+plt.savefig('method_start_plot.png', bbox_inches='tight')
 plt.show()
