@@ -196,3 +196,27 @@ def scatter_plot_F1(saveplot = False):
     if saveplot:
         plt.savefig('method_start_plot.png', bbox_inches='tight')
     plt.show()
+
+def get_search_topic(fname):
+    pth = '../lit/{0}.csv'.format(fname)
+    fo = open(pth, newline = '')
+    file = csv.reader(fo, delimiter = ',')
+    for row in file:
+        return row[0]
+
+def get_all_search_topics(method):
+    return [get_search_topic(fname) for fname in file_names(method)]
+
+def save_all_method_topic_searches():
+    methods = get_methods()
+    ofile = open('../lit/search_terms.csv', "w", newline="")
+    writer = csv.writer(ofile)
+    writer.writerow(['', 'Epidemiology', 'Conservation', 'Fisheries'])
+    for method in methods:
+        topic_searches = get_all_search_topics(method)
+        full_name = full_meth_name(method)
+        row = [full_name]
+        for topic in topic_searches:
+            row.append(topic)
+        writer.writerow(row)
+    ofile.close()
