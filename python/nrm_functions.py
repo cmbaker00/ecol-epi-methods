@@ -91,7 +91,9 @@ def ordered_list_methods_by_year():
     return lst
 
 def custom_colours(col = 'all'):
-    colours = sns.color_palette("colorblind")
+    # colours = sns.color_palette("colorblind")
+    colours = sns.color_palette("Set3",8)
+    colours = sns.hls_palette(8, l=.5, s=.6)
     if col.isnumeric():
         return colours[col]
     elif col == 'all':
