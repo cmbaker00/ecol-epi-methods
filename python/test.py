@@ -18,7 +18,9 @@ for method in meth_list:
     height += 1
     ys = min_ignore_none(list(start_years[method].values()))
     ye = max_ignore_none(list(start_years[method].values()))
+    gap = ye - ys
     plt.plot([ys,ye],[height,height],'k--', zorder = 0)
+    plt.text(ys + gap/2 - 2 - .2*len(str(gap)), height + .2, '{0} Years'.format(gap))
     for fld in start_years['costben']:
         # continue
         plt.scatter(start_years[method][fld], height, s = 100, c = custom_colours(fld))
