@@ -20,7 +20,7 @@ for method in meth_list:
         # continue
         plt.scatter(start_years[method][fld], height, s = 100, c = custom_colours(fld))
 
-yr_start = 1983
+yr_start = 2010
 text_offset = .15
 plt.scatter(yr_start - 1,8, s = 100, c = custom_colours('epi'))
 ax.text(yr_start,8 - text_offset,'Epidemiology')
