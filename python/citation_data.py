@@ -1,7 +1,9 @@
 import csv
 import numpy as np
+import os.path
 
 def get_citations_by_year(filename):
+    ignore = list_ignore(filename)
     file = csv.reader(open('../lit/{0}.csv'.format(filename), newline=''), delimiter=',')
 
     flag = False
@@ -13,7 +15,7 @@ def get_citations_by_year(filename):
             ye = row.index('2018')
             flag = True
             flag_first = True
-        elif flag:
+        elif flag and row[0] not in ignore:
             y_data = np.array(row[ys:ye]).astype(np.float)
             yr = row[7]
             if yr[0].isalpha():
@@ -47,3 +49,19 @@ def get_paper_titles_before(year, filename):
             if yr <= year:
                 titles.append(row[0])
     return titles
+
+def list_ignore(filename):
+    fpath = '../lit/{0}_ignore.csv'.format(filename)
+    if os.path.isfile(fpath):
+        file = csv.reader(open(fpath, newline=''), delimiter=',')
+        lst = []
+        for row in file:
+            if isinstance(row, list):
+                title = row[0]
+            elif isinstance(row, str):
+                title = row
+            if len(title) > 0:
+                lst.append(title)
+    else:
+        lst = []
+    return lst
