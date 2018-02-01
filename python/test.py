@@ -22,7 +22,6 @@ for method in meth_list:
     plt.plot([ys,ye],[height,height],'k--', zorder = 0)
     plt.text(ys + gap/2 - 2 - .2*len(str(gap)), height + .2, '{0} Years'.format(gap))
     for fld in start_years['costben']:
-        # continue
         plt.scatter(start_years[method][fld], height, s = 100, c = custom_colours(fld))
 
 yr_start = 2010
@@ -54,7 +53,6 @@ for ytl in yticklabels:
     hgt += 1
 
 ax.yaxis.set_visible(False)
-# plt.yticks(rotation='vertical')
 fld = 'epi'
 method = 'ensemble'
 
