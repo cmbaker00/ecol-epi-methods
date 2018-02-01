@@ -77,7 +77,7 @@ def get_earliest_year():
 def min_ignore_none(lst):
     return min(x for x in lst if x is not None)
 def max_ignore_none(lst):
-    return min(x for x in lst if x is not None)
+    return max(x for x in lst if x is not None)
 
 def ordered_list_methods_by_year():
     yrs = get_earliest_year()
