@@ -74,6 +74,11 @@ def get_earliest_year():
     start_years = read_start_years_from_file()
     return {method: min(x for x in list(start_years[method].values()) if x is not None) for method in opts}
 
+def min_ignore_none(lst):
+    return min(x for x in lst if x is not None)
+def max_ignore_none(lst):
+    return max(x for x in lst if x is not None)
+
 def ordered_list_methods_by_year():
     yrs = get_earliest_year()
     yr_list = list(yrs.values())
