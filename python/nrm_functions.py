@@ -1,6 +1,7 @@
 from citation_data import *
 import matplotlib.pyplot as plt
 import numpy as np
+import ast
 
 def get_methods():
     return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble']
@@ -50,6 +51,22 @@ def get_all_start_years():
         yrs = get_start_year_publications(opt)
         out[opt] = {'fish': yrs[0], 'cons': yrs[1], 'epi': yrs[2]}
     return out
+
+def store_all_start_years():
+    st_yrs = get_all_start_years()
+    write_dict_to_file(st_yrs,'start_years_dictionary.txt')
+
+def write_dict_to_file(dict, fname):
+    file = open(fname, 'w')
+    file.write(str(dict))
+    file.close()
+
+def read_start_years_from_file():
+    return read_dict_from_file('start_years_dictionary.txt')
+
+def read_dict_from_file(fname):
+    file = open(fname, 'r')
+    return ast.literal_eval(file.read())
 
 def get_earliest_year():
     opts = get_methods()
