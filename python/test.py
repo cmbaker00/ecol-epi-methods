@@ -16,6 +16,9 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 for method in meth_list:
     height += 1
+    ys = min_ignore_none(list(start_years[method].values()))
+    ye = max_ignore_none(list(start_years[method].values()))
+    plt.plot([ys,ye],[height,height],'k--', zorder = 0)
     for fld in start_years['costben']:
         # continue
         plt.scatter(start_years[method][fld], height, s = 100, c = custom_colours(fld))
