@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import ast
 import seaborn as sns
+import csv
 
 def get_methods():
     return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble']
@@ -111,3 +112,40 @@ def custom_colours(col = 'all'):
         return colours[2]
     else:
         return 'Unknown option'
+
+def write_all_first_papers():
+    for meth in get_methods():
+        print_first_papers(meth)
+
+def print_first_papers(meth):
+    start_years = read_start_years_from_file()
+    ff, fc, fe = file_names(meth)
+    sy = start_years[meth]['fish']
+    if sy == None:
+        sy = 2018
+    papers = get_paper_titles_before(sy,ff)
+    # print(papers)
+    save_paper_list_csv(ff, papers)
+    sy = start_years[meth]['cons']
+    if sy == None:
+        sy = 2018
+    papers = get_paper_titles_before(sy,fc)
+    # print(papers)
+    save_paper_list_csv(fc, papers)
+    sy = start_years[meth]['epi']
+    if sy == None:
+        sy = 2018
+    papers = get_paper_titles_before(sy,fe)
+    # print(papers)
+    save_paper_list_csv(fe, papers)
+    # print(ff)
+
+def save_paper_list_csv(fname, lst):
+    ofile = open('../lit/{0}_firstpapers.csv'.format(fname), "w", newline="")
+    writer = csv.writer(ofile)
+    for title in lst:
+        # print(title)
+        writer.writerow([title])
+    ofile.close()
+
+write_all_first_papers()
