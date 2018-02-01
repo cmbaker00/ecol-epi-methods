@@ -22,17 +22,25 @@ for method in meth_list:
 
 yr_start = 2010
 text_offset = .15
-plt.scatter(yr_start - 1,8, s = 100, c = custom_colours('epi'))
-ax.text(yr_start,8 - text_offset,'Epidemiology')
-plt.scatter(yr_start - 1,7, s = 100, c = custom_colours('cons'))
-ax.text(yr_start,7 - text_offset,'Conservation')
-plt.scatter(yr_start - 1,6, s = 100, c = custom_colours('fish'))
-ax.text(yr_start,6 - text_offset,'Fisheries')
+st_height = 1.25
+heigh_offset = .75
+legend_dot_size = 200
+
+plt.scatter(yr_start - 1,st_height + heigh_offset*2, s = legend_dot_size, c = custom_colours('epi'))
+ax.text(yr_start,st_height + heigh_offset*2 - text_offset,'Epidemiology')
+plt.scatter(yr_start - 1,st_height + heigh_offset, s = legend_dot_size, c = custom_colours('cons'))
+ax.text(yr_start,st_height + heigh_offset - text_offset,'Conservation')
+plt.scatter(yr_start - 1,st_height, s = legend_dot_size, c = custom_colours('fish'))
+ax.text(yr_start,st_height - text_offset,'Fisheries')
 yticklabels = return_all_full_names()
 yticklabels.insert(0,'')
 yticklabels = [st.title() for st in yticklabels]
 
 ax.set_yticklabels(yticklabels)
+
+
+
+
 # plt.yticks(rotation='vertical')
 fld = 'epi'
 method = 'ensemble'
