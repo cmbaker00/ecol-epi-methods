@@ -1,0 +1,9 @@
+,Epidemiology,Conservation,Fisheries
+Ethics,TOPIC: (Ethics) AND TOPIC: (Fisher*),TOPIC: (Ethics) AND TOPIC: (Conservation Ecolog*),TOPIC: (Ethics) AND TOPIC: (Epidemi*)
+Optimisation,TOPIC: (Optimisation OR Optimization) AND TOPIC: (Fisher*),TOPIC: (Optimisation OR Optimization) AND TOPIC: (Conservation Ecolog*),TOPIC: (Optimisation OR Optimization) AND TOPIC: (Epidemi*)
+Cost-benefit,TOPIC: (((Cost benefit) OR (Cost-benefit) OR (Cost utility) OR (Cost-utility)) AND analysis) AND TOPIC: (Fisher*),TOPIC: (((Cost benefit) OR (Cost-benefit) OR (Cost utility) OR (Cost-utility)) AND analysis) AND TOPIC: (Conservation Ecolog*),TOPIC: (((Cost benefit) OR (Cost-benefit) OR (Cost utility) OR (Cost-utility)) AND analysis) AND TOPIC: (Epidemi*)
+Value of Information,TOPIC: (Value of Information) AND TOPIC: (Fisher*),TOPIC: (value of information) AND TOPIC: (Conservation Ecolog*),TOPIC: (Value of Information) AND TOPIC: (Epidemi*)
+Adaptive Management,TOPIC: (Adaptive management) AND TOPIC: (Fisher*),TOPIC: (Adaptive management) AND TOPIC: (Conservation Ecolog*),TOPIC: (Adaptive management) AND TOPIC: (Epidemi*)
+Individual Based Model,TOPIC: (individual based model) AND TOPIC: (Fisher*),TOPIC: (Individual based model) AND TOPIC: (Conservation Ecolog*),TOPIC: (individual based model) AND TOPIC: (Epidemi*)
+Structured Decision-Making,TOPIC: (Structured decision making) AND TOPIC: (Fisher*),TOPIC: (structured decision making) AND TOPIC: (Conservation Ecolog*),TOPIC: (Structured decision making) AND TOPIC: (Epidemi*)
+Ensemble Models,TOPIC: (Ensemble model) AND TOPIC: (Fisher*),TOPIC: (Ensemble model) AND TOPIC: (con),TOPIC: (Ensemble model) AND TOPIC: (Epidemi*)
