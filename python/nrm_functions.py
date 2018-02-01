@@ -70,7 +70,7 @@ def read_dict_from_file(fname):
 
 def get_earliest_year():
     opts = get_methods()
-    start_years = get_all_start_years()
+    start_years = read_start_years_from_file()
     return {method: min(x for x in list(start_years[method].values()) if x is not None) for method in opts}
 
 def ordered_list_methods_by_year():
