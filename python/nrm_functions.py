@@ -2,6 +2,7 @@ from citation_data import *
 import matplotlib.pyplot as plt
 import numpy as np
 import ast
+import seaborn as sns
 
 def get_methods():
     return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble']
@@ -90,9 +91,7 @@ def ordered_list_methods_by_year():
     return lst
 
 def custom_colours(col = 'all'):
-    colours = [[.2, .5, .9],
-               [.1, .8, .1],
-               [.8, .1, .4]]
+    colours = sns.color_palette()
     if col.isnumeric():
         return colours[col]
     elif col == 'all':
