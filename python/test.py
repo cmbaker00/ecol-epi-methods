@@ -36,9 +36,17 @@ yticklabels = return_all_full_names()
 yticklabels.insert(0,'')
 yticklabels = [st.title() for st in yticklabels]
 
-ax.set_yticklabels(yticklabels)
+ax.set_yticklabels('')
 
-
+yticklabels.pop(0)
+hgt = 1
+for ytl in yticklabels:
+    sty = min_ignore_none(list(start_years[meth_list[hgt-1]].values()))
+    h_offset = 0.4 + .65*len(ytl)
+    if ytl == 'Adaptive Management':
+        h_offset += 1
+    ax.text(sty - h_offset,hgt - text_offset/2,ytl)
+    hgt += 1
 
 
 # plt.yticks(rotation='vertical')
