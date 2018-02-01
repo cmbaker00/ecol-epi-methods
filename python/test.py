@@ -40,3 +40,5 @@ method = 'ensemble'
 
 ff, fc, fe = file_names(method)
 titles = get_paper_titles_before(start_years[method][fld], fe)
+
+plt.show()
