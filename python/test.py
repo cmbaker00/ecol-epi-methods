@@ -33,8 +33,7 @@ yticklabels.insert(0,'')
 yticklabels = [st.title() for st in yticklabels]
 
 ax.set_yticklabels(yticklabels)
-
-# plt.close()
+# plt.yticks(rotation='vertical')
 fld = 'epi'
 method = 'ensemble'
 
