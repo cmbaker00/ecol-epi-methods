@@ -1,9 +1,18 @@
 import csv
 import numpy as np
 import os.path
-
+import pandas as pd
+import os
 def get_citations_by_year(filename):
     ignore = list_ignore(filename)
+    if os.path.isfile('../lit/{0}.csv'.format(filename)):
+        pass
+    elif os.path.isfile('../lit/{0}.xls'.format(filename)):
+        data_xls = pd.read_excel('../lit/{0}.xls'.format(filename), 'savedrecs', index_col=None)
+        data_xls.to_csv('../lit/{0}.csv'.format(filename), encoding='utf-8', index=False)
+    else:
+        raise Exception('File does not exist: {0}.csv or {0}.xls'.format(filename))
+
     file = csv.reader(open('../lit/{0}.csv'.format(filename), newline=''), delimiter=',')
 
     flag = False
@@ -11,8 +20,13 @@ def get_citations_by_year(filename):
     for row in file:
         # print(row)
         if row[0] == 'Title':
-            ys = row.index('1900')
-            ye = row.index('2018')
+            try:
+                ys = row.index('1900')
+                ye = row.index('2018')
+            except:
+                ys = row.index('1900.0')
+                ye = row.index('2018.0')
+
             flag = True
             flag_first = True
         elif flag and row[0] not in ignore:

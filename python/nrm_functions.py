@@ -6,12 +6,12 @@ import seaborn as sns
 import csv
 
 def get_methods():
-    return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble']
+    return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble','sna']
 
 def full_meth_name(method):
     dict = {'ethics': 'Ethics', 'optim': 'Optimisation', 'costben': 'Cost-benefit', 'voi': 'Value of Information',
             'adaptive': 'Adaptive Management', 'ibm': 'Individual Based Model', 'sdm': 'Structured Decision-Making',
-            'ensemble': 'Ensemble Models'}
+            'ensemble': 'Ensemble Models', 'sna': 'Social Network Analysis'}
     return dict[method]
 
 def return_all_full_names():
