@@ -6,12 +6,13 @@ import seaborn as sns
 import csv
 
 def get_methods():
-    return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble','sna']
+    return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble','sna','machine']
 
 def full_meth_name(method):
     dict = {'ethics': 'Ethics', 'optim': 'Optimisation', 'costben': 'Cost-benefit', 'voi': 'Value of Information',
             'adaptive': 'Adaptive Management', 'ibm': 'Individual Based Model', 'sdm': 'Structured Decision-Making',
-            'ensemble': 'Ensemble Models', 'sna': 'Social Network Analysis'}
+            'ensemble': 'Ensemble Models', 'sna': 'Social Network Analysis',
+            'machine': 'Machine Learning'}
     return dict[method]
 
 def return_all_full_names():
@@ -88,7 +89,7 @@ def ordered_list_methods_by_year():
     lst = []
     counter = 0
     for ent in lst_nested:
-        if len(ent) > counter + 1:
+        if len(ent) > counter:
             lst.append(ent[counter])
             counter += 1
         else:
@@ -161,7 +162,7 @@ def scatter_plot_F1(saveplot = False):
         gap = ye - ys
         plt.plot([ys,ye],[height,height],'k--', zorder = 0)
         plt.text(ys + gap/2 - 2 - .2*len(str(gap)), height + .2, '{0} Years'.format(gap))
-        for fld in start_years['costben']:
+        for fld in start_years[method]:
             plt.scatter(start_years[method][fld], height, s = 100, c = custom_colours(fld))
 
     yr_start = 2010
