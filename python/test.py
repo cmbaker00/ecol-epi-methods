@@ -7,4 +7,4 @@ if re_read_data:
     write_all_first_papers()
     save_all_method_topic_searches()
 
-scatter_plot_F1()
+scatter_plot_F1(saveplot=True)
