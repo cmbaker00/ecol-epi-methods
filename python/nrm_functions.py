@@ -6,13 +6,13 @@ import seaborn as sns
 import csv
 
 def get_methods():
-    return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble','sna','machine']
+    return ['ethics','optim','costben','voi','adaptive','ibm','sdm','ensemble','sna','machine','dl']
 
 def full_meth_name(method):
     dict = {'ethics': 'Ethics', 'optim': 'Optimisation', 'costben': 'Cost-benefit', 'voi': 'Value of Information',
             'adaptive': 'Adaptive Management', 'ibm': 'Individual Based Model', 'sdm': 'Structured Decision-Making',
             'ensemble': 'Ensemble Models', 'sna': 'Social Network Analysis',
-            'machine': 'Machine Learning'}
+            'machine': 'Machine Learning', 'dl': 'Deep Learning'}
     return dict[method]
 
 def return_all_full_names():
@@ -149,6 +149,12 @@ def save_paper_list_csv(fname, lst):
         writer.writerow([title])
     ofile.close()
 
+def repeat_items(ls):
+    if len(set(ls)) == len(ls):
+        return []
+    else:
+        return list(set([l for l, tr in zip(ls,[sum([ent == ts for ent in ls]) > 1 for ts in ls]) if tr]))
+
 def scatter_plot_F1(saveplot = False):
     start_years = read_start_years_from_file()
     meth_list = ordered_list_methods_by_year()
@@ -160,10 +166,27 @@ def scatter_plot_F1(saveplot = False):
         ys = min_ignore_none(list(start_years[method].values()))
         ye = max_ignore_none(list(start_years[method].values()))
         gap = ye - ys
-        plt.plot([ys,ye],[height,height],'k--', zorder = 0)
-        plt.text(ys + gap/2 - 2 - .2*len(str(gap)), height + .2, '{0} Years'.format(gap))
+        rep_years = repeat_items(start_years[method].values())
+
+        if gap == 1:
+            yr_txt = 'Year'
+        else:
+            yr_txt = 'Years'
+        if any([sy is None for sy in start_years[method].values()]):
+            plt.plot([ys,2020],[height,height],'k--', zorder = 0)
+        else:
+            plt.plot([ys,ye],[height,height],'k--', zorder = 0)
+            plt.text(ys + gap / 2 - 2 - .2 * len(str(gap)), height + .2, '{0} {1}'.format(gap, yr_txt))
+
+        rep_offset_index = 0
+        rep_offset_dist = .15
         for fld in start_years[method]:
-            plt.scatter(start_years[method][fld], height, s = 100, c = custom_colours(fld))
+            if start_years[method][fld] in rep_years:
+                rep_offset = -rep_offset_dist/2 + rep_offset_index*rep_offset_dist
+                rep_offset_index += 1
+            else:
+                rep_offset = 0
+            plt.scatter(start_years[method][fld], height + rep_offset, s = 100, c = custom_colours(fld), alpha = .8)
 
     yr_start = 2010
     text_offset = .15
@@ -194,6 +217,7 @@ def scatter_plot_F1(saveplot = False):
         hgt += 1
 
     ax.yaxis.set_visible(False)
+    plt.xlim(1980,2020)
     if saveplot:
         plt.savefig('method_start_plot.png', bbox_inches='tight')
     plt.show()
