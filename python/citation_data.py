@@ -49,6 +49,8 @@ def create_frequency(years, data):
 def get_paper_titles_before(year, filename):
     file = csv.reader(open('../lit/{0}.csv'.format(filename), newline=''), delimiter=',')
     titles = []
+    authors = []
+    years = []
     flag = False
     for row in file:
         # print(row)
@@ -62,7 +64,9 @@ def get_paper_titles_before(year, filename):
             yr = float(yr)
             if yr <= year:
                 titles.append(row[0])
-    return titles
+                authors.append(row[1])
+                years.append(row[7])
+    return titles, authors, years
 
 def list_ignore(filename):
     fpath = '../lit/{0}_ignore.csv'.format(filename)

@@ -124,29 +124,29 @@ def print_first_papers(meth):
     sy = start_years[meth]['fish']
     if sy == None:
         sy = 2018
-    papers = get_paper_titles_before(sy,ff)
+    papers, authors, years = get_paper_titles_before(sy,ff)
     # print(papers)
-    save_paper_list_csv(ff, papers)
+    save_paper_list_csv(ff, papers, authors, years)
     sy = start_years[meth]['cons']
     if sy == None:
         sy = 2018
-    papers = get_paper_titles_before(sy,fc)
+    papers, authors, years = get_paper_titles_before(sy,fc)
     # print(papers)
-    save_paper_list_csv(fc, papers)
+    save_paper_list_csv(fc, papers, authors, years)
     sy = start_years[meth]['epi']
     if sy == None:
         sy = 2018
-    papers = get_paper_titles_before(sy,fe)
+    papers, authors, years = get_paper_titles_before(sy,fe)
     # print(papers)
-    save_paper_list_csv(fe, papers)
+    save_paper_list_csv(fe, papers, authors, years)
     # print(ff)
 
-def save_paper_list_csv(fname, lst):
+def save_paper_list_csv(fname, lst, authors, years):
     ofile = open('../lit/{0}_firstpapers.csv'.format(fname), "w", newline="")
     writer = csv.writer(ofile)
-    for title in lst:
+    for title, author, year in zip(lst, authors, years):
         # print(title)
-        writer.writerow([title])
+        writer.writerow([title, author, year])
     ofile.close()
 
 def repeat_items(ls):
